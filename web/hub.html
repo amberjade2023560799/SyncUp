@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUB</title>
+    <style>
+        body {
+            background-image: url('image/hub.png');
+            background-size: auto;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: right;
+            margin-right: 0;
+            padding-right: 350px;
+            padding-bottom: 200px; 
+        }
+        h1 {
+            font-family: 'Arial Extra Bold', Arial Black, sans-serif;
+            font-size: 135px;
+            color: black;
+        }
+        p {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+        }
+        .back-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+	    position: absolute;
+            bottom: 150px;
+            right: 100px; 
+            margin-left: 1000px;
+            margin-top: 250px;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HUB</h1>
+        <p id="disposal-bin">Disposal Bin: ...............</p>
+        <p id="kiosk">Kiosk: ...............</p>
+        <a href="user.html" class="back-button">Back</a>
+    </div>
+	<script>
+    function loadHubData() {
+        fetch("HubServlet")
+        .then(response => response.text())
+        .then(data => {
+            let [disposalBin, kiosk] = data.split("|");
+            document.getElementById("disposal-bin").innerText = "Disposal Bin: " + disposalBin;
+            document.getElementById("kiosk").innerText = "Kiosk: " + kiosk;
+        });
+    }
+
+    window.onload = loadHubData;
+</script>
+
+</body>
+</html>

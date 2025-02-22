@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Schedule</title>
+    <style>
+        body {
+            background-image: url('image/collection_schedule.png');
+            background-size: auto;
+            font-family: Arial, sans-serif;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 71px;
+            color: #316621;
+            font-weight: bold;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+            position: absolute;
+            top: 350px;
+            right: 250px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+        }
+        .content label {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        .content input[type="date"] {
+            margin-bottom: 10px;
+        }
+        .back-button {
+            position: absolute; /* Position the button absolutely */
+            bottom: 20px; /* Position from the bottom */
+            right: 20px; /* Position from the right */
+            padding: 10px 20px;
+            background-color: #316621;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-button:hover {
+            background-color: #274d17;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="Collection">COLLECTION</div>
+        <div class="Schedule">SCHEDULE</div>
+    </div>
+    <div class="content">
+        <label>Disposal Bin: ........</label>
+        <label>Collection Date: <input type="date"></label>
+        <label>Frequency: ......</label>
+    </div>
+    <!-- Back Button -->
+    <a href="user.html" class="back-button">Back</a>
+	
+	<script>
+    fetch('CollectionScheduleServlet')
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error:', data.error);
+                return;
+            }
+
+            document.querySelector(".content label:nth-child(1)").textContent = "Disposal Bin: " + (data.disposalBin || "N/A");
+            document.querySelector(".content input[type='date']").value = data.collectionDate || "";
+            document.querySelector(".content label:nth-child(3)").textContent = "Frequency: " + (data.frequency || "N/A");
+        })
+        .catch(error => console.error('Error fetching schedule:', error));
+</script>
+
+</body>
+</html>
