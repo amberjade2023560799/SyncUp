@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposal Bin</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('image/disposal_bin.png');
+            background-size: cover; /*Adjust the size as needed */
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .DISPOSAL,
+        .BIN {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 70px;
+            font-weight: extra-bold;
+            color: #3CA845;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .BIN {
+            top: 90px;
+        }
+
+   	.form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Light background */
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            margin-top: 200px; /* Adds space from the top */
+            margin-left: 400px;
+
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .form-row label {
+            font-size: 22px;
+            width: 45%;
+            color: #333;
+        }
+
+        .form-row input,
+        .form-row select {
+            width: 50%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .form-row input[readonly] {
+            background-color: #f9f9f9;
+        }
+
+    .back-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button button {
+            padding: 10px 30px;
+            background-color: #3CA845;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .back-button button:hover {
+            background-color: #34a837;
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 768px) {
+            .DISPOSAL, .BIN {
+                font-size: 50px;
+                top: 10px;
+                left: 10px;
+            }
+
+            .form-container {
+                width: 80%;
+                padding: 20px;
+            }
+
+            .form-row label {
+                font-size: 18px;
+                width: 40%;
+            }
+
+            .form-row input, .form-row select {
+                width: 55%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="DISPOSAL">DISPOSAL</div>
+    <div class="BIN">BIN</div>
+
+    <div class="form-container">
+        <div class="form-row">
+            <label for="user">User:</label>
+            <input type="text" id="user" name="user" value="(auto-populated)" readonly>
+        </div>
+
+        <div class="form-row">
+            <label for="capacity">Capacity:</label>
+            <input type="text" id="capacity" name="capacity">
+        </div>
+
+        <div class="form-row">
+            <label for="currentFill">Current Fill:</label>
+            <input type="text" id="currentFill" name="currentFill">
+        </div>
+
+        <div class="form-row">
+            <label for="lastEmptied">Last Emptied:</label>
+            <input type="date" id="lastEmptied" name="lastEmptied">
+        </div>
+
+        <div class="form-row">
+            <label for="location">Location:</label>
+            <select id="location" name="location">
+                <option value="">Select State</option>
+                <option value="johor">Johor</option>
+                <option value="kedah">Kedah</option>
+                <option value="kelantan">Kelantan</option>
+                <option value="melaka">Melaka</option>
+                <option value="negeri-sembilan">Negeri Sembilan</option>
+                <option value="pahang">Pahang</option>
+                <option value="penang">Penang</option>
+                <option value="perak">Perak</option>
+                <option value="perlis">Perlis</option>
+                <option value="sabah">Sabah</option>
+                <option value="sarawak">Sarawak</option>
+                <option value="selangor">Selangor</option>
+                <option value="terengganu">Terengganu</option>
+                <option value="kuala-lumpur">Kuala Lumpur</option>
+                <option value="putrajaya">Putrajaya</option>
+                <option value="labuan">Labuan</option>
+            </select>
+        </div>
+
+        <div class="back-button">
+            <button onclick="window.location.href='user.html'">Back</button>
+        </div>
+    </div>
+</body>
+</html>

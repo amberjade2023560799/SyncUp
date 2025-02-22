@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Alert</title>
+    <style>
+        body {
+            background-image: url('image/maintenance_alert.png');
+            background-size: auto;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: right;
+            margin-right: 150px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+
+        }
+        .heading {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 70px;
+            color: #dd9f05;
+            text-align: right;
+            margin-top: 50px; 
+            line-height: 1.2;
+            text-align: left;
+            display: inline-block; 
+        }
+        .details {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            text-align: right;
+            padding-right: 200px;
+            padding-bottom: 50px; 
+          
+        }
+        .back-button {
+            margin-top: 250px;
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #dd9f05;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+	    position: absolute;
+            bottom: 150px;
+            right: 100px; 
+
+        }
+        .back-button:hover {
+            background-color: #c88c04;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Split Maintenance Alert into two rows -->
+        <div class="heading">Maintenance<br>Alert</div>
+        
+        <div class="details">
+            <p>Disposal Bin: ............</p>
+            <p>Alert Type: ............</p>
+            <p>Alert Time: ............</p>
+        </div>
+        <a href="user.html" class="back-button">Back</a>
+    </div>
+</body>
+</html>
