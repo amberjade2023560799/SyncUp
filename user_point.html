@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Points</title>
+    <style>
+        body {
+            background-image: url('image/userpint.png');
+            background-size: auto;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 75px;
+            font-weight: 800;
+            color: #004aad;
+            text-align: right;
+            padding: 40px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+            margin-right: 100px;
+            padding: 10px;
+            font-size: 50px;
+            color: #000000;
+        }
+        .back-button {
+            position: absolute;
+            bottom: 20px;
+            left: 1100px;
+            padding: 10px 20px;
+            background-color: #210502;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #003a8c;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">USER POINTS</div>
+    <div class="content">
+        <p id="points-history">Points History: Loading...</p>
+		<p id="redeem">Redeem: Loading...</p>
+		<p id="rewards">Rewards: Loading...</p>
+
+    </div>
+    <a href="user.html" class="back-button">Back</a>
+	
+	<script>
+    function loadUserPoints() {
+        fetch("UserPointsServlet")
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url; // Redirect to login if session is missing
+                return;
+            }
+            return response.text();
+        })
+        .then(data => {
+            if (data) {
+                let [pointsHistory, redeemHistory, rewards] = data.split("|");
+                document.getElementById("points-history").innerText = "Points History: " + pointsHistory;
+                document.getElementById("redeem").innerText = "Redeem: " + redeemHistory;
+                document.getElementById("rewards").innerText = "Rewards: " + rewards;
+            }
+        });
+    }
+
+    function redeemPoints() {
+        fetch("RedeemServlet", { method: "POST" })
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url; // Redirect if session is missing
+                return;
+            }
+            return response.text();
+        })
+        .then(message => alert(message)); // Show response message
+    }
+
+    window.onload = loadUserPoints;
+</script>
+
+
+
+</body>
+</html>
